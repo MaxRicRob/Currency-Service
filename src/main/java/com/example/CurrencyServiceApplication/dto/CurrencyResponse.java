@@ -1,4 +1,4 @@
-package com.example.Currency.Service.dto;
+package com.example.CurrencyServiceApplication.dto;
 
 
 import lombok.AllArgsConstructor;

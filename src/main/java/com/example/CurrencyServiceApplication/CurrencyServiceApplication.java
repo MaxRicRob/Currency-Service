@@ -1,4 +1,4 @@
-package com.example.Currency.Service;
+package com.example.CurrencyServiceApplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

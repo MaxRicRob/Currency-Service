@@ -1,4 +1,4 @@
-package com.example.Currency.Service;
+package com.example.CurrencyServiceApplication;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
