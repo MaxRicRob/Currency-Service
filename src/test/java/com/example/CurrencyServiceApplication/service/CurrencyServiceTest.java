@@ -9,8 +9,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class CurrencyServiceTest {
 
-
-
     @Test
     void getUpdatedCurrency() {
 

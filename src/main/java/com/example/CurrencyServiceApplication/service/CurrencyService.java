@@ -2,7 +2,9 @@ package com.example.CurrencyServiceApplication.service;
 
 import com.example.CurrencyServiceApplication.dto.CurrencyRequest;
 import com.example.CurrencyServiceApplication.dto.CurrencyResponse;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CurrencyService {
 
 
