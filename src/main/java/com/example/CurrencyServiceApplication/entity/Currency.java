@@ -1,4 +1,4 @@
-package com.example.CurrencyServiceApplication.dto;
+package com.example.CurrencyServiceApplication.entity;
 
 public enum Currency {
 

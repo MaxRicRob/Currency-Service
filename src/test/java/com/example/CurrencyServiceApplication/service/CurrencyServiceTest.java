@@ -1,8 +1,9 @@
 package com.example.CurrencyServiceApplication.service;
 
-import com.example.CurrencyServiceApplication.dto.Currency;
-import com.example.CurrencyServiceApplication.dto.CurrencyRequest;
-import com.example.CurrencyServiceApplication.dto.CurrencyResponse;
+import com.example.CurrencyServiceApplication.domain.CurrencyService;
+import com.example.CurrencyServiceApplication.entity.Currency;
+import com.example.CurrencyServiceApplication.entity.CurrencyRequest;
+import com.example.CurrencyServiceApplication.entity.CurrencyResponse;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

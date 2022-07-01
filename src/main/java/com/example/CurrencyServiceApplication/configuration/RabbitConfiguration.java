@@ -27,6 +27,7 @@ public class RabbitConfiguration {
     public RabbitController rabbitController() {
         return new RabbitController();
     }
+
     @Bean
     public DirectExchange directExchange() {
         return new DirectExchange(directXchangeName);
@@ -41,7 +42,6 @@ public class RabbitConfiguration {
     public Binding currencyServiceBinding(DirectExchange directExchange, Queue currencyServiceQueue) {
         return BindingBuilder.bind(currencyServiceQueue).to(directExchange).with(currencyServiceRoutingKey);
     }
-
 
 
 }

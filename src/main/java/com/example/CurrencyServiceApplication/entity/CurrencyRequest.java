@@ -1,4 +1,4 @@
-package com.example.CurrencyServiceApplication.dto;
+package com.example.CurrencyServiceApplication.entity;
 
 
 import lombok.AllArgsConstructor;
@@ -12,11 +12,11 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-public class CurrencyResponse {
+public class CurrencyRequest {
 
     private int id;
-    private long updatedPrice;
-    private Currency updatedCurrency;
+    private long totalPrice;
+    private Currency wantedCurrency;
 
 
 }

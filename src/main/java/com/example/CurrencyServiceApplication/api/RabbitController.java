@@ -1,8 +1,8 @@
 package com.example.CurrencyServiceApplication.api;
 
-import com.example.CurrencyServiceApplication.dto.CurrencyRequest;
-import com.example.CurrencyServiceApplication.dto.CurrencyResponse;
-import com.example.CurrencyServiceApplication.service.CurrencyService;
+import com.example.CurrencyServiceApplication.entity.CurrencyRequest;
+import com.example.CurrencyServiceApplication.entity.CurrencyResponse;
+import com.example.CurrencyServiceApplication.domain.CurrencyService;
 import com.google.gson.Gson;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
