@@ -1,6 +1,11 @@
 server:
   port: 8084
 
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+
 #rabbitMQ
 queue-names:
   currency-service: currency-service.rpc.queue
