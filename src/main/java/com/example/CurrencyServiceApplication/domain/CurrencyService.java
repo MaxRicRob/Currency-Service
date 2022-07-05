@@ -13,25 +13,25 @@ public class CurrencyService {
         return new CurrencyResponse()
                 .setId(currencyRequest.getId())
                 .setUpdatedCurrency(currencyRequest.getWantedCurrency())
-                .setUpdatedPrice((long) updatePrice(currencyRequest));
+                .setUpdatedPrice(updatePrice(currencyRequest));
 
 
     }
 
-    private double updatePrice(CurrencyRequest currencyRequest) {
+    private long updatePrice(CurrencyRequest currencyRequest) {
 
         var totalPrice = currencyRequest.getTotalPrice();
         switch (currencyRequest.getWantedCurrency()) {
             case MXN:
                 return totalPrice * 22;
             case USD:
-                return totalPrice * 1.1;
+                return (long) (totalPrice * 1.1);
             case CAD:
-                return totalPrice * 1.4;
+                return (long) (totalPrice * 1.4);
             case YEN:
                 return totalPrice * 135;
             case POUND:
-                return totalPrice * 0.9;
+                return (long) (totalPrice * 0.9);
             default:
                 return totalPrice;
         }
