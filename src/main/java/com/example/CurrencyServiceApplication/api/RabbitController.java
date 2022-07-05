@@ -19,15 +19,18 @@ public class RabbitController {
     @RabbitListener(queues = "${queue-names.currency-service}")
     public String handleRequest(Message message) {
 
-        var input = parseMessage(message);
-        if (input[0].equals("currencyRequest")) {
-            var currencyRequest = new Gson().fromJson(input[1], CurrencyRequest.class);
+        var key = getKey(message);
+        if (key.equals("currencyRequest")) {
+            var currencyRequest = new Gson().fromJson(
+                    new String(message.getBody(), StandardCharsets.UTF_8), CurrencyRequest.class
+            );
+            System.out.println("did it");
             return new Gson().toJson(currencyService.getUpdatedCurrency(currencyRequest));
         }
         return new Gson().toJson(new CurrencyResponse());
     }
 
-    private String[] parseMessage(Message message) {
-        return new String(message.getBody(), StandardCharsets.UTF_8).split("_");
+    private String getKey(Message message) {
+        return (String) message.getMessageProperties().getHeaders().get("key");
     }
 }
