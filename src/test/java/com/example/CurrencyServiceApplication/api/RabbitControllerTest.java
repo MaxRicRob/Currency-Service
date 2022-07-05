@@ -28,12 +28,12 @@ class RabbitControllerTest {
     CurrencyService currencyService;
 
     @Test
-    void handleRequestWithCorrectMessageKey() {
+    void handleRequestWithCorrectMessageType() {
         var currencyRequest = getCurrencyRequest();
         var currencyResponse = getCurrencyResponse();
         var message = new Message((new Gson().toJson(currencyRequest)).getBytes());
         message.getMessageProperties()
-                .setHeader("key", "currencyRequest");
+                .setType("currencyRequest");
         when(currencyService.getUpdatedCurrency(any())).thenReturn(currencyResponse);
 
         rabbitController.handleRequest(message);
@@ -42,11 +42,11 @@ class RabbitControllerTest {
     }
 
     @Test
-    void handleRequestWithIncorrectMessageKey() {
+    void handleRequestWithIncorrectMessageType() {
         var currencyRequest = getCurrencyRequest();
         var message = new Message((new Gson().toJson(currencyRequest)).getBytes());
         message.getMessageProperties()
-                .setHeader("key", "IncorrectMessageKey");
+                .setType("IncorrectMessageType");
 
         rabbitController.handleRequest(message);
 
