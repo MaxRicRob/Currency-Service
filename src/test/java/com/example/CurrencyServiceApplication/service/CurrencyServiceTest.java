@@ -11,7 +11,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class CurrencyServiceTest {
 
     @Test
-    void getUpdatedCurrency() {
+    void get_updated_currency() {
 
         final CurrencyService currencyService = new CurrencyService();
 

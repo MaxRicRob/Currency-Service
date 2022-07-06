@@ -28,7 +28,7 @@ class RabbitControllerTest {
     CurrencyService currencyService;
 
     @Test
-    void handleRequestWithCorrectMessageType() {
+    void handle_request_with_correct_message_type() {
         var currencyRequest = getCurrencyRequest();
         var currencyResponse = getCurrencyResponse();
         var message = new Message((new Gson().toJson(currencyRequest)).getBytes());
@@ -42,7 +42,7 @@ class RabbitControllerTest {
     }
 
     @Test
-    void handleRequestWithIncorrectMessageType() {
+    void handle_request_with_incorrect_message_type() {
         var currencyRequest = getCurrencyRequest();
         var message = new Message((new Gson().toJson(currencyRequest)).getBytes());
         message.getMessageProperties()
