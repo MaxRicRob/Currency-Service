@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 class RabbitControllerTest {
 
     @InjectMocks
-    RabbitController rabbitController = new RabbitController();
+    RabbitController rabbitController;
 
     @Mock
     CurrencyService currencyService;
