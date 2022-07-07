@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.amqp.core.Message;
 
+import static com.example.CurrencyServiceApplication.api.MessageType.CURRENCY_REQUEST;
 import static com.example.CurrencyServiceApplication.entity.Currency.MXN;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
@@ -33,7 +34,7 @@ class RabbitControllerTest {
         var currencyResponse = getCurrencyResponse();
         var message = new Message((new Gson().toJson(currencyRequest)).getBytes());
         message.getMessageProperties()
-                .setType("currencyRequest");
+                .setType(CURRENCY_REQUEST.name());
         when(currencyService.getUpdatedCurrency(any())).thenReturn(currencyResponse);
 
         rabbitController.handleRequest(message);
