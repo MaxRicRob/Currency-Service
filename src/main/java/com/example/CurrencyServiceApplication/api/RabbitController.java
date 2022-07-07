@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.nio.charset.StandardCharsets;
 
+import static com.example.CurrencyServiceApplication.api.MessageType.CURRENCY_REQUEST;
+
 public class RabbitController {
 
 
@@ -19,8 +21,8 @@ public class RabbitController {
     @RabbitListener(queues = "${queue-names.currency-service}")
     public String handleRequest(Message message) {
 
-        var type = message.getMessageProperties().getType();
-        if (type.equals("currencyRequest")) {
+        var type = MessageType.valueOf(message.getMessageProperties().getType());
+        if (type.equals(CURRENCY_REQUEST)) {
             var currencyRequest = new Gson().fromJson(
                     new String(message.getBody(), StandardCharsets.UTF_8), CurrencyRequest.class
             );
