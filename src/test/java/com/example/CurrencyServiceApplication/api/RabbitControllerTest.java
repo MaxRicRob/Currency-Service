@@ -1,6 +1,5 @@
 package com.example.CurrencyServiceApplication.api;
 
-import com.example.CurrencyServiceApplication.api.dto.CurrencyResponse;
 import com.example.CurrencyServiceApplication.domain.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
 import com.google.gson.Gson;
@@ -52,11 +51,6 @@ class RabbitControllerTest {
         verifyNoInteractions(currencyService);
     }
 
-    private CurrencyResponse getCurrencyResponse() {
-        return new CurrencyResponse()
-                .setWantedCurrency(MXN)
-                .setTotalPrice(500L);
-    }
 
     private CurrencyRequest getCurrencyRequest() {
         return new CurrencyRequest()
