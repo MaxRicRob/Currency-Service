@@ -1,21 +1,15 @@
 package com.example.CurrencyServiceApplication.domain;
 
-import com.example.CurrencyServiceApplication.entity.CurrencyRequest;
-import com.example.CurrencyServiceApplication.entity.CurrencyResponse;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CurrencyService {
 
 
-    public CurrencyResponse getUpdatedCurrency(CurrencyRequest currencyRequest) {
+    public CurrencyRequest updateTotalPrice(CurrencyRequest currencyRequest) {
 
-        return new CurrencyResponse()
-                .setId(currencyRequest.getId())
-                .setUpdatedCurrency(currencyRequest.getWantedCurrency())
-                .setUpdatedPrice(updatePrice(currencyRequest));
-
-
+        return currencyRequest
+                .setTotalPrice(updatePrice(currencyRequest));
     }
 
     private long updatePrice(CurrencyRequest currencyRequest) {

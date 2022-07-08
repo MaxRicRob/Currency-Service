@@ -1,8 +1,8 @@
 package com.example.CurrencyServiceApplication.api;
 
+import com.example.CurrencyServiceApplication.api.dto.CurrencyResponse;
+import com.example.CurrencyServiceApplication.domain.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
-import com.example.CurrencyServiceApplication.entity.CurrencyRequest;
-import com.example.CurrencyServiceApplication.entity.CurrencyResponse;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +14,6 @@ import org.springframework.amqp.core.Message;
 import static com.example.CurrencyServiceApplication.api.MessageType.CURRENCY_REQUEST;
 import static com.example.CurrencyServiceApplication.entity.Currency.MXN;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
@@ -31,15 +30,14 @@ class RabbitControllerTest {
     @Test
     void handle_request_with_correct_message_type() {
         var currencyRequest = getCurrencyRequest();
-        var currencyResponse = getCurrencyResponse();
         var message = new Message((new Gson().toJson(currencyRequest)).getBytes());
         message.getMessageProperties()
                 .setType(CURRENCY_REQUEST.name());
-        when(currencyService.getUpdatedCurrency(any())).thenReturn(currencyResponse);
+        when(currencyService.updateTotalPrice(any())).thenReturn(currencyRequest);
 
         rabbitController.handleRequest(message);
 
-        verify(currencyService, times(1)).getUpdatedCurrency(any(CurrencyRequest.class));
+        verify(currencyService).updateTotalPrice(any(CurrencyRequest.class));
     }
 
     @Test
@@ -56,14 +54,12 @@ class RabbitControllerTest {
 
     private CurrencyResponse getCurrencyResponse() {
         return new CurrencyResponse()
-                .setId(1)
-                .setUpdatedCurrency(MXN)
-                .setUpdatedPrice(500L);
+                .setWantedCurrency(MXN)
+                .setTotalPrice(500L);
     }
 
     private CurrencyRequest getCurrencyRequest() {
         return new CurrencyRequest()
-                .setId(1)
                 .setWantedCurrency(MXN)
                 .setTotalPrice(200L);
     }
