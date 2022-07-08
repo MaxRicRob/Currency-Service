@@ -1,7 +1,7 @@
 package com.example.CurrencyServiceApplication.api;
 
-import com.example.CurrencyServiceApplication.entity.CurrencyRequest;
-import com.example.CurrencyServiceApplication.entity.CurrencyResponse;
+import com.example.CurrencyServiceApplication.api.dto.CurrencyResponse;
+import com.example.CurrencyServiceApplication.domain.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
 import com.google.gson.Gson;
 import org.springframework.amqp.core.Message;
@@ -32,9 +32,12 @@ public class RabbitController {
             var currencyRequest = new Gson().fromJson(
                     new String(message.getBody(), StandardCharsets.UTF_8), CurrencyRequest.class
             );
-            return new Gson().toJson(currencyService.getUpdatedCurrency(currencyRequest));
+            return new Gson().toJson(
+                    CurrencyResponse.from(
+                            currencyService.updateTotalPrice(currencyRequest)
+                    )
+            );
         }
         return new Gson().toJson(new CurrencyResponse());
     }
-
 }
