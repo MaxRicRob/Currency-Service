@@ -1,5 +1,6 @@
 package com.example.CurrencyServiceApplication.api;
 
+import com.example.CurrencyServiceApplication.api.error.ErrorResponseException;
 import com.example.CurrencyServiceApplication.domain.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
 import com.google.gson.Gson;
@@ -12,6 +13,7 @@ import org.springframework.amqp.core.Message;
 
 import static com.example.CurrencyServiceApplication.api.MessageType.CURRENCY_REQUEST;
 import static com.example.CurrencyServiceApplication.entity.Currency.MXN;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
@@ -28,15 +30,21 @@ class RabbitControllerTest {
 
     @Test
     void handle_request_with_correct_message_type() {
-        var currencyRequest = getCurrencyRequest();
-        var message = new Message((new Gson().toJson(currencyRequest)).getBytes());
-        message.getMessageProperties()
-                .setType(CURRENCY_REQUEST.name());
-        when(currencyService.updateTotalPrice(any())).thenReturn(currencyRequest);
 
-        rabbitController.handleRequest(message);
+        try {
+            var currencyRequest = getCurrencyRequest();
+            var message = new Message((new Gson().toJson(currencyRequest)).getBytes());
+            message.getMessageProperties()
+                    .setType(CURRENCY_REQUEST.name());
+            when(currencyService.updateTotalPrice(any())).thenReturn(currencyRequest);
 
-        verify(currencyService).updateTotalPrice(any(CurrencyRequest.class));
+            rabbitController.handleRequest(message);
+
+            verify(currencyService).updateTotalPrice(any(CurrencyRequest.class));
+
+        } catch (ErrorResponseException e) {
+            fail();
+        }
     }
 
     @Test

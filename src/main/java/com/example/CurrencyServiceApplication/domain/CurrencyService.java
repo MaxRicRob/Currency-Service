@@ -1,13 +1,15 @@
 package com.example.CurrencyServiceApplication.domain;
 
+import com.example.CurrencyServiceApplication.api.error.ErrorResponseException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CurrencyService {
 
 
-    public CurrencyRequest updateTotalPrice(CurrencyRequest currencyRequest) {
+    public CurrencyRequest updateTotalPrice(CurrencyRequest currencyRequest) throws ErrorResponseException {
 
+        if (currencyRequest == null) throw new ErrorResponseException();
         return currencyRequest
                 .setTotalPrice(updatePrice(currencyRequest));
     }

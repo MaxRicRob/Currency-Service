@@ -1,6 +1,7 @@
 package com.example.CurrencyServiceApplication.api;
 
 import com.example.CurrencyServiceApplication.api.dto.CurrencyResponse;
+import com.example.CurrencyServiceApplication.api.error.ErrorResponseException;
 import com.example.CurrencyServiceApplication.domain.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
 import com.google.gson.Gson;
@@ -32,12 +33,21 @@ public class RabbitController {
             var currencyRequest = new Gson().fromJson(
                     new String(message.getBody(), StandardCharsets.UTF_8), CurrencyRequest.class
             );
-            return new Gson().toJson(
-                    CurrencyResponse.from(
-                            currencyService.updateTotalPrice(currencyRequest)
-                    )
-            );
+            try {
+                return new Gson().toJson(
+                        CurrencyResponse.from(
+                                currencyService.updateTotalPrice(currencyRequest)
+                        )
+                );
+            } catch (ErrorResponseException e) {
+                return errorResponse();
+            }
         }
-        return new Gson().toJson(new CurrencyResponse());
+        return errorResponse();
     }
+
+    private String errorResponse() {
+        return "errorResponse";
+    }
+
 }
