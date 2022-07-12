@@ -9,6 +9,7 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.ConditionalRejectingErrorHandler;
+import org.springframework.amqp.rabbit.listener.FatalExceptionStrategy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
@@ -51,7 +52,12 @@ public class RabbitConfiguration {
 
     @Bean
     public ErrorHandler errorHandler() {
-        return new ConditionalRejectingErrorHandler(new MyFatalExceptionStrategy());
+        return new ConditionalRejectingErrorHandler(customExceptionStrategy());
+    }
+
+    @Bean
+    FatalExceptionStrategy customExceptionStrategy() {
+        return new MyFatalExceptionStrategy();
     }
 
     @Bean
