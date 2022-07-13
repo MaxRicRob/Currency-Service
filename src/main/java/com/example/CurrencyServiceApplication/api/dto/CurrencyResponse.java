@@ -1,8 +1,8 @@
 package com.example.CurrencyServiceApplication.api.dto;
 
 
-import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.Currency;
+import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +24,4 @@ public class CurrencyResponse {
                 .setWantedCurrency(currencyRequest.getWantedCurrency())
                 .setTotalPrice(currencyRequest.getTotalPrice());
     }
-
-
 }

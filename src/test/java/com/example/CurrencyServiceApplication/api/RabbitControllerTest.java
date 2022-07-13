@@ -1,8 +1,8 @@
 package com.example.CurrencyServiceApplication.api;
 
-import com.example.CurrencyServiceApplication.error.ErrorResponseException;
-import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
+import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
+import com.example.CurrencyServiceApplication.error.ErrorResponseException;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,9 +24,9 @@ import static org.mockito.Mockito.when;
 class RabbitControllerTest {
 
     @InjectMocks
-    RabbitController rabbitController;
+    private RabbitController rabbitController;
     @Mock
-    CurrencyService currencyService;
+    private CurrencyService currencyService;
 
     @Test
     void handle_request_with_correct_message_type() {
