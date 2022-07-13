@@ -13,6 +13,7 @@ import org.springframework.amqp.core.Message;
 
 import static com.example.CurrencyServiceApplication.api.MessageType.CURRENCY_REQUEST;
 import static com.example.CurrencyServiceApplication.domain.Currency.MXN;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -24,7 +25,6 @@ class RabbitControllerTest {
 
     @InjectMocks
     RabbitController rabbitController;
-
     @Mock
     CurrencyService currencyService;
 
@@ -59,6 +59,24 @@ class RabbitControllerTest {
         verifyNoInteractions(currencyService);
     }
 
+    @Test
+    void handle_request_catch_exception() {
+        try {
+
+            var currencyRequest = getCurrencyRequest();
+            var message = new Message((new Gson().toJson(currencyRequest)).getBytes());
+            message.getMessageProperties()
+                    .setType(CURRENCY_REQUEST.name());
+            when(currencyService.updateTotalPrice(any())).thenThrow(ErrorResponseException.class);
+
+            var response = rabbitController.handleRequest(message);
+
+            assertThat(response).isEqualTo("errorResponse");
+
+        } catch (ErrorResponseException e) {
+            fail();
+        }
+    }
 
     private CurrencyRequest getCurrencyRequest() {
         return new CurrencyRequest()
