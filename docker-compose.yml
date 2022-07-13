@@ -5,7 +5,7 @@ services:
     command: java -jar target/CurrencyServiceApplication-0.0.1-SNAPSHOT.jar
     build:
       context: .
-      dockerfile: .docker/Dockerfile
+      dockerfile: ./Dockerfile
     ports:
       - 8084:8084
     expose:
