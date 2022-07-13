@@ -1,4 +1,4 @@
-package com.example.CurrencyServiceApplication.api.error;
+package com.example.CurrencyServiceApplication.error;
 
 public class ErrorResponseException extends Exception{
 }

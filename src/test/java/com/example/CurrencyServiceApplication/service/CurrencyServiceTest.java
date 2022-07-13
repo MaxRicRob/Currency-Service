@@ -1,9 +1,9 @@
 package com.example.CurrencyServiceApplication.service;
 
-import com.example.CurrencyServiceApplication.api.error.ErrorResponseException;
-import com.example.CurrencyServiceApplication.domain.CurrencyRequest;
+import com.example.CurrencyServiceApplication.error.ErrorResponseException;
+import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
-import com.example.CurrencyServiceApplication.entity.Currency;
+import com.example.CurrencyServiceApplication.domain.Currency;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

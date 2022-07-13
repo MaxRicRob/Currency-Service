@@ -1,7 +1,7 @@
 package com.example.CurrencyServiceApplication.api;
 
-import com.example.CurrencyServiceApplication.api.error.ErrorResponseException;
-import com.example.CurrencyServiceApplication.domain.CurrencyRequest;
+import com.example.CurrencyServiceApplication.error.ErrorResponseException;
+import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.amqp.core.Message;
 
 import static com.example.CurrencyServiceApplication.api.MessageType.CURRENCY_REQUEST;
-import static com.example.CurrencyServiceApplication.entity.Currency.MXN;
+import static com.example.CurrencyServiceApplication.domain.Currency.MXN;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;

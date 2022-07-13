@@ -1,8 +1,8 @@
 package com.example.CurrencyServiceApplication.api;
 
 import com.example.CurrencyServiceApplication.api.dto.CurrencyResponse;
-import com.example.CurrencyServiceApplication.api.error.ErrorResponseException;
-import com.example.CurrencyServiceApplication.domain.CurrencyRequest;
+import com.example.CurrencyServiceApplication.error.ErrorResponseException;
+import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
 import com.google.gson.Gson;
 import org.springframework.amqp.core.Message;
@@ -26,7 +26,7 @@ public class RabbitController {
         try {
             messageType = MessageType.valueOf(message.getMessageProperties().getType());
         } catch (IllegalArgumentException e) {
-            return new Gson().toJson(new CurrencyResponse());
+            return errorResponse();
         }
 
         if (messageType.equals(CURRENCY_REQUEST)) {

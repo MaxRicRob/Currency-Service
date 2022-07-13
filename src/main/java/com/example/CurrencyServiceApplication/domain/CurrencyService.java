@@ -1,6 +1,7 @@
 package com.example.CurrencyServiceApplication.domain;
 
-import com.example.CurrencyServiceApplication.api.error.ErrorResponseException;
+import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
+import com.example.CurrencyServiceApplication.error.ErrorResponseException;
 import org.springframework.stereotype.Service;
 
 @Service
