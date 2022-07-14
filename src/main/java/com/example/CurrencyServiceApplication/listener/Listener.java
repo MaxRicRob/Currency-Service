@@ -1,24 +1,25 @@
 package com.example.CurrencyServiceApplication.listener;
 
-import com.example.CurrencyServiceApplication.listener.dto.CurrencyResponse;
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
 import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
 import com.example.CurrencyServiceApplication.error.ErrorResponseException;
+import com.example.CurrencyServiceApplication.listener.dto.CurrencyResponse;
 import com.google.gson.Gson;
 import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.nio.charset.StandardCharsets;
 
 import static com.example.CurrencyServiceApplication.listener.MessageType.CURRENCY_REQUEST;
 
-public class RabbitListener {
+public class Listener {
 
 
     @Autowired
     private CurrencyService currencyService;
 
-    @org.springframework.amqp.rabbit.annotation.RabbitListener(queues = "${queue-names.currency-service}")
+    @RabbitListener(queues = "${queue-names.currency-service}")
     public String handleRequest(Message message) {
 
         final MessageType messageType;
