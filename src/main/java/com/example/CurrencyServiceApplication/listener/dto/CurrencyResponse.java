@@ -1,4 +1,4 @@
-package com.example.CurrencyServiceApplication.api.dto;
+package com.example.CurrencyServiceApplication.listener.dto;
 
 
 import com.example.CurrencyServiceApplication.domain.Currency;

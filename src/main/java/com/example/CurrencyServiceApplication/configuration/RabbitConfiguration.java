@@ -1,6 +1,6 @@
 package com.example.CurrencyServiceApplication.configuration;
 
-import com.example.CurrencyServiceApplication.api.RabbitController;
+import com.example.CurrencyServiceApplication.listener.RabbitListener;
 import com.example.CurrencyServiceApplication.error.ErrorResponseException;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -31,8 +31,8 @@ public class RabbitConfiguration {
 
 
     @Bean
-    public RabbitController rabbitController() {
-        return new RabbitController();
+    public RabbitListener rabbitController() {
+        return new RabbitListener();
     }
 
     @Bean

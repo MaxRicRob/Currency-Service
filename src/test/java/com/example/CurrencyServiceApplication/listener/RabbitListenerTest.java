@@ -1,4 +1,4 @@
-package com.example.CurrencyServiceApplication.api;
+package com.example.CurrencyServiceApplication.listener;
 
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
 import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
@@ -11,7 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.amqp.core.Message;
 
-import static com.example.CurrencyServiceApplication.api.MessageType.CURRENCY_REQUEST;
+import static com.example.CurrencyServiceApplication.listener.MessageType.CURRENCY_REQUEST;
 import static com.example.CurrencyServiceApplication.domain.Currency.MXN;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -21,10 +21,10 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class RabbitControllerTest {
+class RabbitListenerTest {
 
     @InjectMocks
-    private RabbitController rabbitController;
+    private RabbitListener rabbitListener;
     @Mock
     private CurrencyService currencyService;
 
@@ -38,7 +38,7 @@ class RabbitControllerTest {
                     .setType(CURRENCY_REQUEST.name());
             when(currencyService.updateTotalPrice(any())).thenReturn(currencyRequest);
 
-            rabbitController.handleRequest(message);
+            rabbitListener.handleRequest(message);
 
             verify(currencyService).updateTotalPrice(any(CurrencyRequest.class));
 
@@ -54,7 +54,7 @@ class RabbitControllerTest {
         message.getMessageProperties()
                 .setType("IncorrectMessageType");
 
-        rabbitController.handleRequest(message);
+        rabbitListener.handleRequest(message);
 
         verifyNoInteractions(currencyService);
     }
@@ -69,7 +69,7 @@ class RabbitControllerTest {
                     .setType(CURRENCY_REQUEST.name());
             when(currencyService.updateTotalPrice(any())).thenThrow(ErrorResponseException.class);
 
-            var response = rabbitController.handleRequest(message);
+            var response = rabbitListener.handleRequest(message);
 
             assertThat(response).isEqualTo("errorResponse");
 
