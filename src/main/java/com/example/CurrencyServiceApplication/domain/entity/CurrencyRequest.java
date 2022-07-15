@@ -1,7 +1,6 @@
 package com.example.CurrencyServiceApplication.domain.entity;
 
 
-import com.example.CurrencyServiceApplication.domain.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
