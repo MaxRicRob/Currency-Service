@@ -1,7 +1,7 @@
 package com.example.CurrencyServiceApplication.configuration;
 
-import com.example.CurrencyServiceApplication.listener.Listener;
 import com.example.CurrencyServiceApplication.error.ErrorResponseException;
+import com.example.CurrencyServiceApplication.listener.Listener;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;

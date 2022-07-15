@@ -11,8 +11,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.amqp.core.Message;
 
-import static com.example.CurrencyServiceApplication.listener.MessageType.CURRENCY_REQUEST;
 import static com.example.CurrencyServiceApplication.domain.entity.Currency.MXN;
+import static com.example.CurrencyServiceApplication.listener.MessageType.CURRENCY_REQUEST;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
