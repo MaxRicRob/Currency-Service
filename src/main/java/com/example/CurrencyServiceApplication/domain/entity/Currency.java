@@ -2,11 +2,11 @@ package com.example.CurrencyServiceApplication.domain.entity;
 
 public enum Currency {
 
-    EURO,
+    EUR,
     MXN,
     USD,
     CAD,
     YEN,
-    POUND
+    PND
 
 }

@@ -29,7 +29,7 @@ public class CurrencyServiceImpl implements CurrencyService {
                 return (long) (totalPrice * 1.4);
             case YEN:
                 return totalPrice * 135;
-            case POUND:
+            case PND:
                 return (long) (totalPrice * 0.9);
             default:
                 return totalPrice;

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.example.CurrencyServiceApplication.domain.entity.Currency.CAD;
 import static com.example.CurrencyServiceApplication.domain.entity.Currency.MXN;
-import static com.example.CurrencyServiceApplication.domain.entity.Currency.POUND;
+import static com.example.CurrencyServiceApplication.domain.entity.Currency.PND;
 import static com.example.CurrencyServiceApplication.domain.entity.Currency.USD;
 import static com.example.CurrencyServiceApplication.domain.entity.Currency.YEN;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -86,16 +86,16 @@ class CurrencyServiceImplTest {
     }
 
     @Test
-    void get_updated_currency_POUND() {
+    void get_updated_currency_PND() {
 
         try {
             var currencyRequest = new CurrencyRequest()
                     .setTotalPrice(100)
-                    .setWantedCurrency(POUND);
+                    .setWantedCurrency(PND);
 
             var response = currencyServiceImpl.updateTotalPrice(currencyRequest);
 
-            assertThat(response.getWantedCurrency()).isEqualTo(POUND);
+            assertThat(response.getWantedCurrency()).isEqualTo(PND);
             assertThat(response.getTotalPrice()).isEqualTo(90);
         } catch (ErrorResponseException e) {
             fail();
