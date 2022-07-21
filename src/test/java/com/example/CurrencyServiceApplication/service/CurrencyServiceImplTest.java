@@ -1,15 +1,15 @@
 package com.example.CurrencyServiceApplication.service;
 
-import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
 import com.example.CurrencyServiceApplication.domain.impl.CurrencyServiceImpl;
+import com.example.CurrencyServiceApplication.entity.CurrencyRequest;
 import com.example.CurrencyServiceApplication.error.ErrorResponseException;
 import org.junit.jupiter.api.Test;
 
-import static com.example.CurrencyServiceApplication.domain.entity.Currency.CAD;
-import static com.example.CurrencyServiceApplication.domain.entity.Currency.MXN;
-import static com.example.CurrencyServiceApplication.domain.entity.Currency.PND;
-import static com.example.CurrencyServiceApplication.domain.entity.Currency.USD;
-import static com.example.CurrencyServiceApplication.domain.entity.Currency.YEN;
+import static com.example.CurrencyServiceApplication.entity.Currency.CAD;
+import static com.example.CurrencyServiceApplication.entity.Currency.MXN;
+import static com.example.CurrencyServiceApplication.entity.Currency.PND;
+import static com.example.CurrencyServiceApplication.entity.Currency.USD;
+import static com.example.CurrencyServiceApplication.entity.Currency.YEN;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 

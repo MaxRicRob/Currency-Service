@@ -1,7 +1,7 @@
 package com.example.CurrencyServiceApplication.listener;
 
 import com.example.CurrencyServiceApplication.domain.CurrencyService;
-import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
+import com.example.CurrencyServiceApplication.entity.CurrencyRequest;
 import com.example.CurrencyServiceApplication.error.ErrorResponseException;
 import com.example.CurrencyServiceApplication.listener.dto.CurrencyResponse;
 import com.google.gson.Gson;

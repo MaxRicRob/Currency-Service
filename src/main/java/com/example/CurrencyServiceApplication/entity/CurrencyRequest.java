@@ -1,4 +1,4 @@
-package com.example.CurrencyServiceApplication.domain.entity;
+package com.example.CurrencyServiceApplication.entity;
 
 
 import lombok.AllArgsConstructor;

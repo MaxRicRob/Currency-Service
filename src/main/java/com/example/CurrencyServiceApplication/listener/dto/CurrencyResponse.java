@@ -1,8 +1,8 @@
 package com.example.CurrencyServiceApplication.listener.dto;
 
 
-import com.example.CurrencyServiceApplication.domain.entity.Currency;
-import com.example.CurrencyServiceApplication.domain.entity.CurrencyRequest;
+import com.example.CurrencyServiceApplication.entity.Currency;
+import com.example.CurrencyServiceApplication.entity.CurrencyRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
